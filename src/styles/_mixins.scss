@@ -1,0 +1,100 @@
+@use 'variables' as vars;
+
+/** ###### TEXT STYLES ##### **/
+
+// Special headings
+@mixin display-1 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-semibold;
+  font-size: 52px;
+}
+
+@mixin display-2 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-semibold;
+  font-size: 38px;
+}
+
+@mixin display-3 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-semibold;
+  font-size: vars.$font-size-xxl;
+}
+
+@mixin display-4 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-semibold;
+  font-size: vars.$font-size-xl;
+}
+
+// Headings
+
+@mixin heading-1 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-medium;
+  font-size: vars.$font-size-xxl;
+}
+
+@mixin heading-2 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-semibold;
+  font-size: vars.$font-size-xl;
+}
+
+@mixin heading-3 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-medium;
+  font-size: vars.$font-size-lg;
+}
+
+@mixin heading-4 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-semibold;
+  font-size: vars.$font-size-base;
+}
+
+@mixin heading-5 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-medium;
+  font-size: vars.$font-size-sm;
+}
+
+@mixin heading-6 {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-medium;
+  font-size: vars.$font-size-xs;
+}
+
+// Paragraph
+
+@mixin paragraph-lg {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-regular;
+  font-size: vars.$font-size-base;
+}
+
+@mixin paragraph-base {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-medium;
+  font-size: vars.$font-size-xs;
+}
+
+@mixin paragraph-sm {
+  font-family: vars.$font-family-base;
+  font-weight: vars.$font-weight-medium;
+  font-size: vars.$font-size-xxs;
+}
+
+/** ###### Media Query ##### **/
+
+@mixin mediaQuery($device) {
+  @if map-has-key(vars.$device-breakpoints, $device) {
+    $breakpoint: map-get(vars.$device-breakpoints, $device);
+
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @warn "No value found for `#{$device}` in $device-breakpoints map.";
+  }
+}

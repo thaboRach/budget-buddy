@@ -1,0 +1,122 @@
+<main class="main-layout">
+  <h2 class="heading">New Transaction</h2>
+
+  <section class="card">
+    <form class="form" novalidate [formRoot]="newTransactionForm">
+      <div class="form-field">
+        <label class="field-label" for="transaction-description">Description</label>
+        <input
+          class="field"
+          type="text"
+          id="transaction-description"
+          [formField]="newTransactionForm.description"
+          placeholder="Enter description"
+        />
+        @if (
+          newTransactionForm.description().touched() && newTransactionForm.description().invalid()
+        ) {
+          <ul class="error-list">
+            @for (error of newTransactionForm.description().errors(); track error) {
+              <li>{{ error.message }}</li>
+            }
+          </ul>
+        }
+      </div>
+
+      <div class="form-field">
+        <label class="field-label" for="transaction-category">Category</label>
+        <input
+          class="field"
+          type="text"
+          id="transaction-category"
+          [formField]="newTransactionForm.category"
+          placeholder="Enter category"
+        />
+        @if (newTransactionForm.category().touched() && newTransactionForm.category().invalid()) {
+          <ul class="error-list">
+            @for (error of newTransactionForm.category().errors(); track error) {
+              <li>{{ error.message }}</li>
+            }
+          </ul>
+        }
+      </div>
+
+      <div class="form-field">
+        <label class="field-label" for="transaction-type">Type</label>
+        <select class="field" [formField]="newTransactionForm.type" id="transaction-type">
+          <option value="">--Please choose an option--</option>
+          <option value="Income">Income</option>
+          <option value="Expense">Expense</option>
+        </select>
+        @if (newTransactionForm.type().touched() && newTransactionForm.type().invalid()) {
+          <ul class="error-list">
+            @for (error of newTransactionForm.type().errors(); track error) {
+              <li>{{ error.message }}</li>
+            }
+          </ul>
+        }
+      </div>
+
+      <div class="form-field">
+        <label class="field-label" for="transaction-amount">Amount</label>
+        <input
+          class="field"
+          type="number"
+          id="transaction-amount"
+          [formField]="newTransactionForm.amount"
+          placeholder="Enter amount"
+        />
+
+        @if (newTransactionForm.amount().touched() && newTransactionForm.amount().invalid()) {
+          <ul class="error-list">
+            @for (error of newTransactionForm.amount().errors(); track error) {
+              <li>{{ error.message }}</li>
+            }
+          </ul>
+        }
+      </div>
+
+      <div class="form-field">
+        <label class="field-label" for="transaction-date">Date</label>
+        <input
+          class="field"
+          type="date"
+          id="transaction-date"
+          [formField]="newTransactionForm.date"
+        />
+        @if (newTransactionForm.date().touched() && newTransactionForm.date().invalid()) {
+          <ul class="error-list">
+            @for (error of newTransactionForm.date().errors(); track error) {
+              <li>{{ error.message }}</li>
+            }
+          </ul>
+        }
+      </div>
+
+      <div class="form-field">
+        <label class="field-label" for="transaction-notes">Notes</label>
+        <textarea
+          class="field"
+          id="transaction-notes"
+          [formField]="newTransactionForm.notes"
+          placeholder="Enter notes"
+        ></textarea>
+        @if (newTransactionForm.notes().touched() && newTransactionForm.notes().invalid()) {
+          <ul class="error-list">
+            @for (error of newTransactionForm.notes().errors(); track error) {
+              <li>{{ error.message }}</li>
+            }
+          </ul>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="button button-primary"
+        [disabled]="newTransactionForm().submitting()"
+      >
+        Save
+      </button>
+    </form>
+  </section>
+</main>

@@ -1,0 +1,12 @@
+@use 'mixins' as vars;
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+
+  .heading {
+    @include vars.display-4;
+  }
+}

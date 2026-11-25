@@ -1,0 +1,13 @@
+<main class="main-layout">
+  <h2 class="heading">Welcome back, {{ firstName }}</h2>
+
+  <section class="info-card-container">
+    @for (item of quickViewItems(); track $index) {
+      <app-info-card [title]="item.title" [value]="item.value"></app-info-card>
+    }
+  </section>
+
+  <app-donut-chart [labels]="categoryLabels()" [data]="categoryAmounts()"></app-donut-chart>
+
+  <app-table [data]="topTransactions()" [columns]="tableColumns"></app-table>
+</main>

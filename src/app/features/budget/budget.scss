@@ -1,0 +1,11 @@
+@use 'index' as tokens;
+
+.budget {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .heading {
+    @include tokens.display-4;
+  }
+}

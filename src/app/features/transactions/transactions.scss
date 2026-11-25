@@ -1,0 +1,11 @@
+@use 'index' as tokens;
+
+.transactions-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.transactions-error {
+  color: #b42318;
+}

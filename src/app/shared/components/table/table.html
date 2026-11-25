@@ -1,0 +1,10 @@
+<div id="table-container">
+  <apex-grid
+    [data]="data()"
+    [columns]="columns()"
+    [editing]="editingConfig()"
+    (cellValueChanged)="onValueChanged($event)"
+    (rowEditStarted)="onRowEditStarted($event)"
+    (rowEditEnded)="onRowEditEnded($event)"
+  ></apex-grid>
+</div>

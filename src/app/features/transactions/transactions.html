@@ -1,0 +1,18 @@
+<main class="main-layout">
+  <h2 class="heading">Transactions</h2>
+
+  <a [routerLink]="'/transactions/new'" class="button button-primary transactions-button"
+    >Add Transaction</a
+  >
+
+  @if (saveError(); as error) {
+    <p class="transactions-error" role="alert">{{ error }}</p>
+  }
+
+  <app-table
+    [data]="transactions()"
+    [columns]="columns"
+    [editingConfig]="editingConfig"
+    (rowValueChanged)="onTransactionChanged($event)"
+  ></app-table>
+</main>
