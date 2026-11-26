@@ -1,8 +1,16 @@
-# AngularDashboard
+# BudgetBuddy
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.6.
+This application is a simple budget tracking application
 
-## Development server
+## Prerequisites
+
+Ensure that you have `pnpm` installed. To install it run this command:
+
+```bash
+
+```
+
+## Getting Started
 
 To start a local development server, run:
 
@@ -11,6 +19,12 @@ ng serve
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+To run the local json server:
+
+```bash
+pnx json-server db.json
+```
 
 ## Code scaffolding
 

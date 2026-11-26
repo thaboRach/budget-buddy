@@ -1,29 +1,12 @@
-@use 'variables' as vars;
-
-.button {
-  border: none;
-  padding: 0.5rem 1rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-family: vars.$font-family-base;
-  font-size: 1rem;
-  margin: 0.25rem 0;
-  cursor: pointer;
-  border-radius: 0.25rem;
-  max-width: fit-content;
-}
-
-.button-primary {
-  background-color: vars.$primary-color;
-  color: vars.$neutral-100;
-}
+@use 'abstracts/_typography' as font;
+@use 'abstracts/colors' as colors;
+@use 'abstracts/shadows' as shadows;
 
 .card {
-  background-color: vars.$secondary-color-1;
-  filter: vars.$drop-shadow-2;
+  background-color: colors.$secondary-1;
+  box-shadow: shadows.$shadow-2;
   border-radius: 0.75rem;
-  border: 1px solid vars.$secondary-color-4;
+  border: 1px solid colors.$secondary-4;
   padding: 2.125rem;
 }
 
@@ -31,40 +14,4 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-
-  .field {
-    border-radius: 0.25rem;
-    border: 1px solid vars.$secondary-color-4;
-    background-color: vars.$secondary-color-1;
-    color: vars.$neutral-100;
-    font-family: vars.$font-family-base;
-    font-size: vars.$font-size-sm;
-    padding: 0.75rem;
-    outline: none;
-  }
-
-  .field::placeholder {
-    color: vars.$neutral-400;
-  }
-
-  .field-label {
-    color: vars.$neutral-100;
-    font-family: vars.$font-family-base;
-    font-size: vars.$font-size-base;
-  }
-
-  .error-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: vars.$error-color;
-    font-family: vars.$font-family-base;
-    font-size: vars.$font-size-xs;
-  }
 }

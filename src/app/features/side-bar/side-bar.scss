@@ -12,7 +12,7 @@
   width: 100%;
   padding: 2.375rem 1.75rem;
   background-color: tokens.$neutral-800;
-  filter: tokens.$drop-shadow-3;
+  box-shadow: tokens.$shadow-3;
 
   .close-btn {
     display: none;
@@ -49,8 +49,8 @@
     }
 
     .title {
-      font-family: tokens.$font-family-base;
-      font-size: tokens.$font-size-lg;
+      font-family: tokens.$family;
+      font-size: tokens.$size-lg;
     }
   }
 
@@ -72,10 +72,10 @@
         padding: 0.875rem 0;
 
         span {
-          font-family: tokens.$font-family-base;
+          font-family: tokens.$family;
           color: tokens.$neutral-400;
-          font-weight: tokens.$font-weight-medium;
-          font-size: tokens.$font-size-sm;
+          font-weight: tokens.$weight-medium;
+          font-size: tokens.$size-sm;
         }
 
         .icon {
@@ -96,10 +96,10 @@
     }
 
     .user-name {
-      font-family: tokens.$font-family-base;
-      font-size: tokens.$font-size-sm;
+      font-family: tokens.$family;
+      font-size: tokens.$size-sm;
       color: tokens.$neutral-100;
-      font-weight: tokens.$font-weight-medium;
+      font-weight: tokens.$weight-medium;
     }
   }
 

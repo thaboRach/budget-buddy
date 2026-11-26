@@ -88,6 +88,15 @@
       "date": "2026-11-04",
       "notes": "",
       "id": "oAv8vAQ5wKs"
+    },
+    {
+      "description": "Uber",
+      "category": "Transport",
+      "type": "Expense",
+      "amount": 400,
+      "date": "2026-11-01T22:00:00.000Z",
+      "notes": "",
+      "id": "4zulLbRgEGg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
