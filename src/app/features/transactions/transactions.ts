@@ -5,9 +5,10 @@ import { Table } from '../../shared/components/table/table';
 import { ColumnConfiguration, GridEditingConfiguration } from 'apex-grid';
 import { TransactionsService } from '../../shared/services/transactions/transactions-service';
 import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  imports: [Table, RouterLink],
+  imports: [Table, RouterLink, MatButtonModule],
   selector: 'app-transactions',
   styleUrl: './transactions.scss',
   templateUrl: './transactions.html',

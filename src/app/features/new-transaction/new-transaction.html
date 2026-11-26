@@ -3,118 +3,102 @@
 
   <section class="card">
     <form class="form" novalidate [formRoot]="newTransactionForm">
-      <div class="form-field">
-        <label class="field-label" for="transaction-description">Description</label>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
         <input
-          class="field"
+          matInput
           type="text"
-          id="transaction-description"
           [formField]="newTransactionForm.description"
           placeholder="Enter description"
         />
         @if (
           newTransactionForm.description().touched() && newTransactionForm.description().invalid()
         ) {
-          <ul class="error-list">
-            @for (error of newTransactionForm.description().errors(); track error) {
-              <li>{{ error.message }}</li>
-            }
-          </ul>
+          @for (error of newTransactionForm.description().errors(); track error) {
+            <mat-error>{{ error.message }}</mat-error>
+          }
         }
-      </div>
+      </mat-form-field>
 
-      <div class="form-field">
-        <label class="field-label" for="transaction-category">Category</label>
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
         <input
-          class="field"
+          matInput
           type="text"
-          id="transaction-category"
           [formField]="newTransactionForm.category"
           placeholder="Enter category"
         />
         @if (newTransactionForm.category().touched() && newTransactionForm.category().invalid()) {
-          <ul class="error-list">
-            @for (error of newTransactionForm.category().errors(); track error) {
-              <li>{{ error.message }}</li>
-            }
-          </ul>
+          @for (error of newTransactionForm.category().errors(); track error) {
+            <mat-error>{{ error.message }}</mat-error>
+          }
         }
-      </div>
+      </mat-form-field>
 
-      <div class="form-field">
-        <label class="field-label" for="transaction-type">Type</label>
-        <select class="field" [formField]="newTransactionForm.type" id="transaction-type">
-          <option value="">--Please choose an option--</option>
-          <option value="Income">Income</option>
-          <option value="Expense">Expense</option>
-        </select>
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select [formField]="newTransactionForm.type">
+          @for (type of transactionTypes; track type) {
+            <mat-option [value]="type.value">{{ type.label }}</mat-option>
+          }
+        </mat-select>
         @if (newTransactionForm.type().touched() && newTransactionForm.type().invalid()) {
-          <ul class="error-list">
-            @for (error of newTransactionForm.type().errors(); track error) {
-              <li>{{ error.message }}</li>
-            }
-          </ul>
+          @for (error of newTransactionForm.type().errors(); track error) {
+            <mat-error>{{ error.message }}</mat-error>
+          }
         }
-      </div>
+      </mat-form-field>
 
-      <div class="form-field">
-        <label class="field-label" for="transaction-amount">Amount</label>
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
         <input
-          class="field"
-          type="number"
-          id="transaction-amount"
+          matInput
+          type="text"
           [formField]="newTransactionForm.amount"
           placeholder="Enter amount"
+          mask="separator.2"
+          prefix="R "
+          thousandSeparator=" "
+          decimalMarker="."
+          placeholder="R 0.00"
         />
 
         @if (newTransactionForm.amount().touched() && newTransactionForm.amount().invalid()) {
-          <ul class="error-list">
-            @for (error of newTransactionForm.amount().errors(); track error) {
-              <li>{{ error.message }}</li>
-            }
-          </ul>
+          @for (error of newTransactionForm.amount().errors(); track error) {
+            <mat-error>{{ error.message }}</mat-error>
+          }
         }
-      </div>
+      </mat-form-field>
 
-      <div class="form-field">
-        <label class="field-label" for="transaction-date">Date</label>
-        <input
-          class="field"
-          type="date"
-          id="transaction-date"
-          [formField]="newTransactionForm.date"
-        />
+      <mat-form-field appearance="outline">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" [formField]="newTransactionForm.date" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
         @if (newTransactionForm.date().touched() && newTransactionForm.date().invalid()) {
-          <ul class="error-list">
-            @for (error of newTransactionForm.date().errors(); track error) {
-              <li>{{ error.message }}</li>
-            }
-          </ul>
+          @for (error of newTransactionForm.date().errors(); track error) {
+            <mat-error>{{ error.message }}</mat-error>
+          }
         }
-      </div>
+      </mat-form-field>
 
-      <div class="form-field">
-        <label class="field-label" for="transaction-notes">Notes</label>
+      <mat-form-field appearance="outline">
+        <mat-label>Notes</mat-label>
         <textarea
-          class="field"
-          id="transaction-notes"
+          matInput
           [formField]="newTransactionForm.notes"
           placeholder="Enter notes"
         ></textarea>
         @if (newTransactionForm.notes().touched() && newTransactionForm.notes().invalid()) {
-          <ul class="error-list">
-            @for (error of newTransactionForm.notes().errors(); track error) {
-              <li>{{ error.message }}</li>
-            }
-          </ul>
+          @for (error of newTransactionForm.notes().errors(); track error) {
+            <mat-error>{{ error.message }}</mat-error>
+          }
         }
-      </div>
+      </mat-form-field>
 
-      <button
-        type="submit"
-        class="button button-primary"
-        [disabled]="newTransactionForm().submitting()"
-      >
+      <button type="submit" matButton="filled" [disabled]="newTransactionForm().submitting()">
         Save
       </button>
     </form>

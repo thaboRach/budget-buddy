@@ -2,14 +2,14 @@
 
 apex-grid {
   // Colors
-  --ag-surface: #{tokens.$secondary-color-1};
-  --ag-surface-elevated: #{tokens.$secondary-color-1};
+  --ag-surface: #{tokens.$secondary-1};
+  --ag-surface-elevated: #{tokens.$secondary-1};
   --ag-surface-alt: #{tokens.$neutral-500};
-  --ag-border: #{tokens.$secondary-color-1};
-  //   --ag-row-hover: #{tokens.$neutral-200};
+  --ag-border: #{tokens.$secondary-1};
+
   // Typography
-  --ag-font: #{tokens.$font-family-base};
-  --ag-fs-cell: #{tokens.$font-size-sm};
+  --ag-font: #{tokens.$family};
+  --ag-fs-cell: #{tokens.$size-sm};
 
   // Text
   --ag-text: #{tokens.$neutral-100};

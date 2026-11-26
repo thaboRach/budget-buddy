@@ -14,6 +14,13 @@ import {
 } from '@angular/forms/signals';
 import { Transaction } from '../../models/transaction.model';
 import { TransactionsService } from '../../shared/services/transactions/transactions-service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgxMaskDirective } from 'ngx-mask';
 
 interface TransactionData {
   description: string;
@@ -34,16 +41,30 @@ const EMPTY_TRANSACTION: TransactionData = {
 };
 
 @Component({
-  imports: [FormField, FormRoot],
+  imports: [
+    FormField,
+    FormRoot,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    NgxMaskDirective,
+  ],
+  providers: [provideNativeDateAdapter()],
   selector: 'app-new-transaction',
   styleUrl: './new-transaction.scss',
   templateUrl: './new-transaction.html',
 })
 export class NewTransaction {
   private readonly transactionsService = inject(TransactionsService);
-  private router = inject(Router);
+  private readonly router = inject(Router);
 
   newTransactionModel = signal<TransactionData>({ ...EMPTY_TRANSACTION });
+  transactionTypes = [
+    { value: 'Income', label: 'Income' },
+    { value: 'Expense', label: 'Expense' },
+  ];
 
   newTransactionForm = form(
     this.newTransactionModel,
@@ -70,7 +91,7 @@ export class NewTransaction {
       required(schemaPath.type, { message: 'Type is required' });
       // Amount
       required(schemaPath.amount, { message: 'Amount is required' });
-      min(schemaPath.amount, 1, { message: 'Amount must be at least 1' });
+      min(schemaPath.amount, 1, { message: 'Amount must be at least R1.00' });
       max(schemaPath.amount, 99999999999, {
         message: 'Amount must be less than or equal to 9999999999',
       });
